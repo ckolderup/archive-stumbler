@@ -1,0 +1,215 @@
+/******************************************************************************
+START Glitch hello-app default styles
+
+The styles in this section do some minimal CSS resets, set default fonts and 
+colors, and handle the layout for our footer and "Remix on Glitch" button. If
+you're new to CSS they may seem a little complicated, but you can scroll down
+to this section's matching END comment to see page-specific styles.
+******************************************************************************/
+/* Our default values set as CSS variables */
+:root {
+  --color-bg: #9d91f5;
+  --color-text-main: #000000;
+  --color-primary: #AFECE0;
+  --wrapper-height: 87vh;
+  --image-max-width: 300px;
+  --image-margin: 3rem;
+  --font-family: "HK Grotesk";
+  --font-family-header: "HK Grotesk";
+}
+
+/* Basic page style resets */
+* {
+  box-sizing: border-box;
+}
+
+/* Import fonts */
+@font-face {
+  font-family: HK Grotesk;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+    format("opentype");
+}
+@font-face {
+  font-family: HK Grotesk;
+  font-weight: bold;
+  src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
+    format("opentype");
+}
+
+/* Our remix on glitch button */
+
+/* Navigation grid */
+
+a:not(.btn--remix):visited {
+  font-family: HK Grotesk;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.1rem;
+  color: #000;
+  text-decoration: none;
+  border-style: none;
+}
+/******************************************************************************
+END Glitch hello-app default styles
+******************************************************************************/
+
+body {
+  font-family: HK Grotesk;
+  background-color: var(--color-bg);
+}
+
+/* Page structure */
+.wrapper {
+  min-height: var(--wrapper-height);
+  display: grid;
+  place-items: center;
+  margin: 0 1rem;
+}
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  max-width: 800px;
+}
+
+/* Title h1 style */
+header {
+  width: 100%;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: bold;
+  text-align: justify;
+}
+
+/* Styles for our custom color form and its results */
+form {
+  display: grid;
+  grid-template: 1fr 5em;
+  margin: 0.75rem 0;
+}
+input {
+  grid-column: 1 / 3;
+  font-family: inherit;
+  font-size: 1rem;
+  width: 100%;
+  margin: auto;
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  display: block;
+  
+}
+label {
+  grid-column: 1;
+  color: #000000;
+  margin: auto;
+  font-size: 2rem;
+  font-weight: bold;
+  display: block;
+  overflow: visible;
+}
+
+#theCTA, #theTaunt {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: auto;
+  width: 100%;
+  text-align: center;
+  min-height: 5rem;
+}
+
+footer {
+  margin: auto;
+  text-align: center;
+}
+
+.note {
+  font-size: .8rem;
+  font-weight: normal;
+}
+
+.starburst {
+  grid-column: 2;
+  scale: 50%;
+  font: 2em sans-serif;
+  background: #101010;  
+  width: 3.2em;
+  height: 3.2em;
+  text-align: center;
+  color: #fff;
+  transform: rotate(-60deg);
+}
+
+.starburst,
+.starburst button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.starburst button {
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  transform: rotate(45deg);
+  border: 0;
+  background-color: inherit;
+  color: inherit;
+  font: inherit;
+}
+
+.starburst:before,
+.starburst:after ,
+.starburst button:before,
+.starburst button:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  z-index: -1;
+  transform: rotate(30deg);
+}
+
+.starburst:after {
+  transform: rotate(-30deg);
+}
+
+.starburst button:after {
+  transform: rotate(30deg);
+}
+.starburst button:before {
+  transform: rotate(-30deg);
+}
+
+/* TODO: do a reduced motion version */
+@keyframes shake {
+  0% {
+    margin-left: 0rem;
+  }
+  25% {
+    margin-left: 0.5rem;
+  }
+  75% {
+    margin-left: -0.5rem;
+  }
+  100% {
+    margin-left: 0rem;
+  }
+}
+
+input:invalid {
+  animation: shake 0.2s ease-in-out 0s 2;
+  box-shadow: 0 0 0.6rem #ff0000;
+}
+
+#theTaunt.hidden, #theCTA.hidden {
+  display: none;
+}
